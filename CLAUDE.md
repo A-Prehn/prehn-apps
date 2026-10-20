@@ -9,3 +9,8 @@ Statisk side for virksomheden Prehn apps (CVR 40316191) og dens apps. Ingen buil
 ## Git workflow
 - Push altid til `develop` først (preview-URL fra Cloudflare Pages).
 - Vent på eksplicit "push til main" før der merges til main.
+
+## Hold siden opdateret
+Når appen Vores familie ændres (funktioner, Premium, tilladelser, menustier, datahåndtering), opdateres
+`vores-familie/index.html` og evt. `vores-familie/privatliv/index.html` i samme omgang. Push til develop;
+main først ved "push til main", typisk når den nye app-version er live.
