@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prehn apps</title>
+  <meta name="description" content="Små, varme apps til familien.">
+  <link rel="icon" href="vores-familie/icon-180.png">
+  <style>
+    :root { --bg:#faf8f4; --card:#fff; --text:#2c2820; --muted:#8a8278; --sep:#e8e3db; --tint:#3b82c4; }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg:#1b1814; --card:#2a2620; --text:#eee8dd; --muted:#a59d90; --sep:#3b352d; --tint:#6aa6e6; }
+    }
+    * { box-sizing: border-box; }
+    body { margin:0; background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.6; }
+    main { max-width: 720px; margin: 0 auto; padding: 64px 20px 80px; }
+    h1 { font-family:Georgia,"Times New Roman",serif; font-weight:600; font-size:34px; margin:0 0 4px; }
+    .sub { color:var(--muted); margin:0 0 32px; }
+    a.app { display:flex; gap:16px; align-items:center; background:var(--card); border:1px solid var(--sep);
+            border-radius:16px; padding:16px; text-decoration:none; color:var(--text); }
+    a.app img { width:64px; height:64px; border-radius:15px; }
+    a.app strong { font-family:Georgia,"Times New Roman",serif; font-size:20px; font-weight:500; }
+    a.app span { display:block; color:var(--muted); font-size:15px; }
+    footer { margin-top:48px; color:var(--muted); font-size:13px; }
+    footer a { color:var(--muted); }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Prehn apps</h1>
+  <p class="sub">Små, varme apps til familien.</p>
+
+  <a class="app" href="vores-familie/">
+    <img src="vores-familie/icon-180.png" alt="">
+    <div>
+      <strong>Vores familie</strong>
+      <span>Mindebogen, der vokser med jer — til iPhone</span>
+    </div>
+  </a>
+
+  <footer>
+    Kontakt: <a href="mailto:apps@prehn.net">apps@prehn.net</a><br>
+    Prehn apps v/Andreas Prehn Christensen · CVR 40316191 · Danmark
+  </footer>
+</main>
+</body>
+</html>
