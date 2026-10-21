@@ -27,13 +27,8 @@
       --sep:#e2d9c8; --rose:#d4547a; --rose-bg:#f6e1e8; --green:#5d8a63; --green-bg:#e7efe8;
       --gold:#a07c50; --gold-bg:#efe6da; --dark:#2c2820; --on-dark:#faf8f4; --on-dark-muted:#d8d0c3;
     }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg:#1b1814; --bg2:#231f1a; --card:#2a2620; --text:#eee8dd; --muted:#a59d90; --faint:#857d71;
-        --sep:#3b352d; --rose:#e57a9a; --rose-bg:#3a2229; --green:#8db592; --green-bg:#223027;
-        --gold:#c9a273; --gold-bg:#2f281f; --dark:#0f0d0a; --on-dark:#eee8dd; --on-dark-muted:#b8b0a3;
-      }
-    }
+    /* Altid den lyse cremefarve — også når telefonen står på mørkt tema. */
+    :root { color-scheme: light; }
     * { box-sizing:border-box; }
     html { scroll-behavior:smooth; }
     body { margin:0; background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased; }
