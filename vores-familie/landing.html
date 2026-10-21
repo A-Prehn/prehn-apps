@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vores familie — mindebogen, der vokser med jer</title>
+  <meta name="description" content="Saml de første ord, ferierne og mormors opskrifter ét sted — privat i jeres egen iCloud. Mindebogen til hele familien på iPhone.">
+  <link rel="icon" href="icon-180.png">
+  <link rel="apple-touch-icon" href="icon-180.png">
+
+  <!-- Delingskort på Facebook, Instagram, Messenger og iMessage -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Vores familie — mindebogen, der vokser med jer">
+  <meta property="og:description" content="Saml de første ord, ferierne og mormors opskrifter ét sted — privat i jeres egen iCloud.">
+  <meta property="og:image" content="https://apps.prehn.net/vores-familie/og-image.jpg">
+  <meta property="og:locale" content="da_DK">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Safari på iPhone viser en lille "Åbn i App Store"-bjælke øverst -->
+  <meta name="apple-itunes-app" content="app-id=6823090981">
+
+  <style>
+    :root {
+      --bg:#faf8f4; --bg2:#f3ebe0; --card:#fff; --text:#2c2820; --muted:#7a6f60; --faint:#a89f90;
+      --sep:#e2d9c8; --rose:#d4547a; --rose-bg:#f6e1e8; --green:#5d8a63; --green-bg:#e7efe8;
+      --gold:#a07c50; --gold-bg:#efe6da; --dark:#2c2820; --on-dark:#faf8f4; --on-dark-muted:#d8d0c3;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg:#1b1814; --bg2:#231f1a; --card:#2a2620; --text:#eee8dd; --muted:#a59d90; --faint:#857d71;
+        --sep:#3b352d; --rose:#e57a9a; --rose-bg:#3a2229; --green:#8db592; --green-bg:#223027;
+        --gold:#c9a273; --gold-bg:#2f281f; --dark:#0f0d0a; --on-dark:#eee8dd; --on-dark-muted:#b8b0a3;
+      }
+    }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased; }
+    .serif { font-family:"New York",Georgia,"Times New Roman",serif; }
+    .wrap { max-width:1040px; margin:0 auto; padding:0 20px; }
+    section { padding:56px 0; }
+    .kicker { font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); }
+    h1 { font-weight:500; font-size:clamp(32px,6vw,52px); line-height:1.12; margin:0 0 14px; }
+    h2 { font-weight:500; font-size:clamp(24px,4vw,34px); line-height:1.2; margin:8px 0 10px; }
+    h3 { font-weight:500; font-size:21px; margin:0 0 6px; }
+    p { margin:0; }
+    .lead { font-size:18px; color:var(--muted); max-width:34em; }
+    .muted { color:var(--muted); }
+
+    /* Top */
+    header { position:sticky; top:0; z-index:5; background:color-mix(in srgb, var(--bg) 88%, transparent);
+             backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid var(--sep); }
+    header .wrap { display:flex; align-items:center; justify-content:space-between; height:58px; }
+    .brand { display:flex; align-items:center; gap:10px; font-size:18px; text-decoration:none; color:var(--text); }
+    .brand img { width:30px; height:30px; border-radius:8px; }
+    .nav-cta { font-size:14px; color:var(--rose); text-decoration:none; font-weight:600; }
+
+    /* App Store-knap (erstattes af Apples officielle mærke ved lancering) */
+    .store { display:inline-flex; align-items:center; gap:10px; background:var(--dark); color:var(--on-dark); text-decoration:none;
+             border-radius:12px; padding:11px 20px 11px 16px; transition:transform .12s ease; }
+    .store:active { transform:scale(.97); }
+    .store svg { width:24px; height:24px; fill:currentColor; }
+    .store small { display:block; font-size:11px; line-height:1.1; opacity:.8; }
+    .store strong { display:block; font-size:18px; line-height:1.15; font-weight:600; }
+    .fine { font-size:13px; color:var(--faint); margin-top:10px; }
+
+    /* Hero */
+    .hero { padding-top:44px; }
+    .hero .grid { display:grid; gap:36px; align-items:center; }
+    @media (min-width:860px) { .hero .grid { grid-template-columns:1.1fr .9fr; } }
+    .hero-text { text-align:center; }
+    .hero-text .lead { margin:0 auto 24px; }
+    @media (min-width:860px) { .hero-text { text-align:left; } .hero-text .lead { margin:0 0 24px; } }
+
+    /* Telefon */
+    .phone { width:260px; height:540px; margin:0 auto; border-radius:44px; border:10px solid var(--dark); background:var(--bg);
+             padding:44px 14px 14px; position:relative; box-shadow:0 30px 60px -30px rgba(44,40,32,.45); overflow:hidden; }
+    .phone::before { content:""; position:absolute; top:10px; left:50%; transform:translateX(-50%); width:84px; height:24px; border-radius:14px; background:var(--dark); }
+    .phone .hi { font-size:20px; }
+    .phone .quote { background:var(--bg2); border-radius:12px; padding:10px 12px; font-size:13px; font-style:italic; color:var(--muted); margin:10px 0 14px; }
+    .phone .lbl { font-size:10px; letter-spacing:.14em; color:var(--faint); margin-bottom:8px; }
+    .post { display:flex; gap:10px; background:var(--card); border:1px solid var(--sep); border-radius:12px; padding:8px; margin-bottom:8px; }
+    .post .ph { width:46px; height:46px; border-radius:8px; flex-shrink:0; }
+    .post .m { font-size:10px; color:var(--faint); }
+    .post .x { font-size:12px; line-height:1.35; }
+
+    /* Tre grunde */
+    .why { background:var(--bg2); }
+    .cards { display:grid; gap:14px; margin-top:22px; }
+    @media (min-width:760px) { .cards { grid-template-columns:repeat(3,1fr); } }
+    .card { background:var(--card); border:1px solid var(--sep); border-radius:18px; padding:20px; }
+    .icon { width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center; margin-bottom:12px; }
+    .icon svg { width:22px; height:22px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+
+    /* Det særlige */
+    .feature { display:grid; gap:22px; align-items:center; padding:26px 0; border-top:1px solid var(--sep); }
+    .feature:first-of-type { border-top:0; }
+    @media (min-width:760px) { .feature { grid-template-columns:1fr 1fr; } .feature.flip .shot { order:-1; } }
+    .shot { border-radius:20px; aspect-ratio:4/3; display:flex; align-items:center; justify-content:center; color:var(--faint); font-size:13px; }
+
+    /* Trin */
+    .steps { display:grid; gap:14px; margin-top:22px; counter-reset:s; }
+    @media (min-width:760px) { .steps { grid-template-columns:repeat(3,1fr); } }
+    .step { position:relative; padding:20px 20px 20px 64px; background:var(--card); border:1px solid var(--sep); border-radius:18px; }
+    .step::before { counter-increment:s; content:counter(s); position:absolute; left:18px; top:18px; width:32px; height:32px; border-radius:50%;
+                    background:var(--rose-bg); color:var(--rose); display:flex; align-items:center; justify-content:center; font-weight:600; }
+
+    /* Privatliv */
+    .privacy { background:var(--dark); color:var(--on-dark); }
+    .privacy .lead { color:var(--on-dark-muted); }
+    .ticks { list-style:none; padding:0; margin:20px 0 0; display:grid; gap:10px; }
+    @media (min-width:760px) { .ticks { grid-template-columns:repeat(2,1fr); } }
+    .ticks li { display:flex; gap:10px; align-items:flex-start; color:var(--on-dark-muted); }
+    .ticks li::before { content:"✓"; color:#e8a9bd; font-weight:700; }
+
+    /* Pris */
+    .prices { display:grid; gap:14px; margin-top:22px; }
+    @media (min-width:760px) { .prices { grid-template-columns:1fr 1fr; } }
+    .price { background:var(--card); border:1px solid var(--sep); border-radius:18px; padding:22px; }
+    .price.premium { border:2px solid var(--rose); }
+    .price .amount { font-size:28px; margin:4px 0 10px; }
+    .price ul { padding-left:18px; margin:0; color:var(--muted); }
+
+    /* Spørgsmål */
+    details { background:var(--card); border:1px solid var(--sep); border-radius:14px; padding:14px 18px; margin-top:10px; }
+    summary { cursor:pointer; font-weight:600; }
+    details p { margin-top:8px; color:var(--muted); }
+
+    .final { background:var(--bg2); text-align:center; }
+    footer { padding:28px 0 40px; font-size:13px; color:var(--faint); text-align:center; }
+    footer a { color:var(--faint); }
+
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } .store { transition:none; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand serif" href="#top"><img src="icon-180.png" alt="">Vores familie</a>
+    <a class="nav-cta" href="#hent">Hent appen</a>
+  </div>
+</header>
+
+<main id="top">
+  <!-- Toppen: én sætning, én knap -->
+  <section class="hero">
+    <div class="wrap grid">
+      <div class="hero-text">
+        <div class="kicker">Mindebogen til hele familien</div>
+        <h1 class="serif">Mindebogen, der vokser med jer</h1>
+        <p class="lead">Saml de første ord, ferierne og mormors opskrifter ét sted — privat i jeres egen iCloud, så I kan dele dem med dem, I holder af.</p>
+        <a class="store" href="https://apps.apple.com/app/id6823090981" aria-label="Hent Vores familie i App Store">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 12.6c-.02-2.1 1.72-3.12 1.8-3.17-.98-1.43-2.5-1.63-3.05-1.65-1.3-.13-2.53.76-3.19.76-.66 0-1.67-.74-2.75-.72-1.41.02-2.72.82-3.45 2.09-1.47 2.55-.38 6.33 1.06 8.4.7 1.01 1.54 2.15 2.63 2.11 1.06-.04 1.46-.68 2.73-.68 1.28 0 1.64.68 2.75.66 1.14-.02 1.86-1.03 2.55-2.05.8-1.17 1.13-2.31 1.15-2.37-.03-.01-2.2-.84-2.23-3.38zM14.3 6.43c.58-.71.97-1.69.87-2.67-.84.03-1.86.56-2.46 1.27-.54.62-1.01 1.63-.88 2.59.93.07 1.89-.48 2.47-1.19z"/></svg>
+          <span><small>Hent i</small><strong>App Store</strong></span>
+        </a>
+        <p class="fine">Gratis at komme i gang · til iPhone · ingen reklamer</p>
+      </div>
+      <div class="phone" aria-hidden="true">
+        <div class="hi serif">Godaften, Sheila</div>
+        <div class="quote serif">Det er godt at vide, at man hører til hos nogen.</div>
+        <div class="lbl">SENESTE I FAMILIEN</div>
+        <div class="post"><div class="ph" style="background:#e9d9c4"></div><div><div class="m">I dag · Nohr · Højdepunkt</div><div class="x">Første tur på cyklen uden støttehjul</div></div></div>
+        <div class="post"><div class="ph" style="background:#dbe6dc"></div><div><div class="m">I går · Familie · Opskrift</div><div class="x">Mormors æblekage</div></div></div>
+        <div class="post"><div class="ph" style="background:#f1dde4"></div><div><div class="m">Søndag · William · Fødselsdag</div><div class="x">9 · 5 billeder</div></div></div>
+        <div class="post"><div class="ph" style="background:#e3e0ef"></div><div><div class="m">Lørdag · Familie · Rejse</div><div class="x">Sommerferie i Skagen</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tre grunde -->
+  <section class="why">
+    <div class="wrap">
+      <div class="kicker">Hvorfor Vores familie</div>
+      <h2 class="serif">Alt det, der ellers forsvinder i kamerarullen</h2>
+      <div class="cards">
+        <div class="card">
+          <div class="icon" style="background:var(--rose-bg);color:var(--rose)"><svg viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg></div>
+          <h3 class="serif">Saml</h3>
+          <p class="muted">Højdepunkter, dagbog, milepæle, maven og billeder måned for måned — med billeder, video og lyd.</p>
+        </div>
+        <div class="card">
+          <div class="icon" style="background:var(--green-bg);color:var(--green)"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.5-5.5 6.5-5.5s5.7 1.9 6.5 5.5"/><circle cx="17" cy="9" r="2.8"/><path d="M16.5 14.6c2.6.2 4.4 1.9 5 5.4"/></svg></div>
+          <h3 class="serif">Del</h3>
+          <p class="muted">Din partner skriver med, og bedsteforældrene følger med, reagerer og skriver hilsner.</p>
+        </div>
+        <div class="card">
+          <div class="icon" style="background:var(--gold-bg);color:var(--gold)"><svg viewBox="0 0 24 24"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg></div>
+          <h3 class="serif">Gem</h3>
+          <p class="muted">Alt ligger i jeres egen iCloud. Ingen reklamer, ingen fremmede — og I kan altid tage det hele med jer.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Det særlige -->
+  <section>
+    <div class="wrap">
+      <div class="kicker">Det særlige</div>
+      <div class="feature">
+        <div>
+          <h2 class="serif">Det årlige interview</h2>
+          <p class="lead">Stil de samme spørgsmål hver fødselsdag, og optag svarene. Hør, hvordan stemmen og svarene vokser — fra 2 til 18 år.</p>
+        </div>
+        <div class="shot" style="background:#e9d9c4">Skærmbillede: interview</div>
+      </div>
+      <div class="feature flip">
+        <div>
+          <h2 class="serif">Breve til dit 18-årige barn</h2>
+          <p class="lead">Skriv et brev i dag, og forsegl det til en bestemt dato. Det åbnes først, når tiden er inde.</p>
+        </div>
+        <div class="shot" style="background:#f1dde4">Skærmbillede: breve</div>
+      </div>
+      <div class="feature">
+        <div>
+          <h2 class="serif">Mindebogen som rigtig bog</h2>
+          <p class="lead">Ét kapitel for hvert år, med forside og indhold — som PDF til skærmen eller klar til et trykkeri.</p>
+        </div>
+        <div class="shot" style="background:#dbe6dc">Skærmbillede: mindebog</div>
+      </div>
+      <div class="feature flip">
+        <div>
+          <h2 class="serif">Familiens opskrifter og traditioner</h2>
+          <p class="lead">Mormors æblekage, juleaftens rækkefølge og historierne bag — samlet og delt med hele familien.</p>
+        </div>
+        <div class="shot" style="background:#e3e0ef">Skærmbillede: opskrifter</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sådan kommer I i gang -->
+  <section class="why">
+    <div class="wrap">
+      <div class="kicker">Sådan kommer I i gang</div>
+      <h2 class="serif">På under et minut</h2>
+      <div class="steps">
+        <div class="step"><h3 class="serif">Hent appen</h3><p class="muted">Gratis i App Store. Ingen konto — appen bruger jeres iCloud.</p></div>
+        <div class="step"><h3 class="serif">Opret familien</h3><p class="muted">Tilføj jeres børn, og hent de første billeder fra Fotos.</p></div>
+        <div class="step"><h3 class="serif">Inviter de andre</h3><p class="muted">Din partner skriver med, bedsteforældrene kigger med.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Privatliv -->
+  <section class="privacy">
+    <div class="wrap">
+      <div class="kicker" style="color:#e8a9bd">Privatliv</div>
+      <h2 class="serif">Jeres minder er jeres</h2>
+      <p class="lead">Vi har ingen server, og vi kan ikke se jeres billeder. Alt gemmes i jeres egen iCloud og deles kun med dem, I inviterer.</p>
+      <ul class="ticks">
+        <li>Ingen reklamer og ingen sporing</li>
+        <li>Ingen konto eller adgangskode at huske</li>
+        <li>Eksportér alt som ZIP, når I vil</li>
+        <li>Del ét barn med en forælder uden for familien</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Pris -->
+  <section>
+    <div class="wrap">
+      <div class="kicker">Pris</div>
+      <h2 class="serif">Gratis at begynde</h2>
+      <div class="prices">
+        <div class="price">
+          <h3 class="serif">Gratis</h3>
+          <div class="amount serif">0 kr.</div>
+          <ul><li>To børn med alle sektioner</li><li>Din partner kan skrive med</li><li>Eksport af alt</li></ul>
+        </div>
+        <div class="price premium">
+          <h3 class="serif">Premium</h3>
+          <div class="amount serif">19 kr./md. <span class="muted" style="font-size:16px">eller 199 kr. én gang</span></div>
+          <ul><li>Flere børn og flere familier</li><li>Del med bedsteforældre og resten af familien</li><li>Video, film og mindebogen som PDF</li><li>Gælder for hele familien</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Spørgsmål -->
+  <section class="why">
+    <div class="wrap">
+      <div class="kicker">Spørgsmål</div>
+      <details><summary>Skal bedsteforældrene have en iPhone?</summary><p>De skal have en iPhone for at bruge appen. En udgave til at kigge med i en browser er på vej.</p></details>
+      <details><summary>Hvor ligger vores billeder?</summary><p>I jeres egen iCloud. Vi har ingen server og kan ikke se jeres indhold.</p></details>
+      <details><summary>Kan vi få det hele ud igen?</summary><p>Ja. Under Mere → Eksportér alt får I én ZIP-fil med billeder, video, tekster og en PDF-mindebog for hvert barn.</p></details>
+      <p style="margin-top:16px"><a href="./" style="color:var(--rose)">Flere spørgsmål og support →</a></p>
+    </div>
+  </section>
+
+  <!-- Sidste knap -->
+  <section class="final" id="hent">
+    <div class="wrap">
+      <h2 class="serif">Begynd jeres mindebog i dag</h2>
+      <p class="lead" style="margin:0 auto 22px">De små øjeblikke bliver de største minder.</p>
+      <a class="store" href="https://apps.apple.com/app/id6823090981" aria-label="Hent Vores familie i App Store">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 12.6c-.02-2.1 1.72-3.12 1.8-3.17-.98-1.43-2.5-1.63-3.05-1.65-1.3-.13-2.53.76-3.19.76-.66 0-1.67-.74-2.75-.72-1.41.02-2.72.82-3.45 2.09-1.47 2.55-.38 6.33 1.06 8.4.7 1.01 1.54 2.15 2.63 2.11 1.06-.04 1.46-.68 2.73-.68 1.28 0 1.64.68 2.75.66 1.14-.02 1.86-1.03 2.55-2.05.8-1.17 1.13-2.31 1.15-2.37-.03-.01-2.2-.84-2.23-3.38zM14.3 6.43c.58-.71.97-1.69.87-2.67-.84.03-1.86.56-2.46 1.27-.54.62-1.01 1.63-.88 2.59.93.07 1.89-.48 2.47-1.19z"/></svg>
+        <span><small>Hent i</small><strong>App Store</strong></span>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <a href="./">Support</a> · <a href="privatliv/">Privatlivspolitik</a> · <a href="mailto:apps@prehn.net">apps@prehn.net</a><br>
+  Prehn apps v/Andreas Prehn Christensen · CVR 40316191 · Danmark
+</footer>
+
+</body>
+</html>
