@@ -284,7 +284,8 @@
       <h2 class="h2 serif reveal">Gratis at begynde.</h2>
       <div class="seg reveal" id="seg" role="group" aria-label="Betaling">
         <span class="thumb" id="thumb"></span>
-        <button class="press" aria-pressed="true" data-p="md">Månedlig</button>
+        <button class="press" aria-pressed="true" data-p="yr">Årlig</button>
+        <button class="press" aria-pressed="false" data-p="md">Månedlig</button>
         <button class="press" aria-pressed="false" data-p="once">Én gang</button>
       </div>
       <div class="prices">
@@ -295,7 +296,7 @@
         </div>
         <div class="price premium reveal">
           <h3 class="h3 serif">Premium</h3>
-          <div class="amount serif" id="amount">19 kr. <small>om måneden</small></div>
+          <div class="amount serif" id="amount">179 kr. <small>om året</small></div>
           <ul><li>Flere børn og flere familier</li><li>Del med bedsteforældre og resten af familien</li><li>Video, film og mindebogen som PDF</li><li>Gælder for hele familien</li></ul>
         </div>
       </div>
@@ -380,7 +381,7 @@
   seg.querySelectorAll('button').forEach(b => b.addEventListener('click', () => {
     seg.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b));
     place(b);
-    amount.innerHTML = b.dataset.p === 'md' ? '19 kr. <small>om måneden</small>' : '199 kr. <small>én gang, for altid</small>';
+    amount.innerHTML = { yr: '179 kr. <small>om året</small>', md: '19 kr. <small>om måneden</small>', once: '499 kr. <small>én gang, for altid</small>' }[b.dataset.p];
   }));
   addEventListener('load', () => place(seg.querySelector('[aria-pressed=true]')));
   addEventListener('resize', () => place(seg.querySelector('[aria-pressed=true]')));
