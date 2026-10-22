@@ -297,7 +297,7 @@
         <div class="price premium reveal">
           <h3 class="h3 serif">Premium</h3>
           <div class="amount serif" id="amount">179 kr. <small>om året</small></div>
-          <p class="muted" id="trial" style="margin:-.4rem 0 .9rem;font-size:.9375rem">De første 14 dage er gratis.</p>
+          <p class="muted" style="margin:-.4rem 0 .9rem;font-size:.9375rem">Årsabonnement: de første 14 dage gratis.</p>
           <ul><li>Flere børn og flere familier</li><li>Del med bedsteforældre og resten af familien</li><li>Video, film og mindebogen som PDF</li><li>Gælder for hele familien</li></ul>
         </div>
       </div>
@@ -383,7 +383,6 @@
     seg.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b));
     place(b);
     amount.innerHTML = { yr: '179 kr. <small>om året</small>', md: '19 kr. <small>om måneden</small>', once: '499 kr. <small>én gang, for altid</small>' }[b.dataset.p];
-    document.getElementById('trial').style.display = b.dataset.p === 'yr' ? '' : 'none';
   }));
   addEventListener('load', () => place(seg.querySelector('[aria-pressed=true]')));
   addEventListener('resize', () => place(seg.querySelector('[aria-pressed=true]')));
