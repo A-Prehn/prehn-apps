@@ -2,48 +2,48 @@
 <html lang="da">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="../icon-180.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Privatlivspolitik – Vores familie</title>
   <meta name="description" content="Privatlivspolitik for iOS-appen Vores familie.">
-  <style>
-    :root { --bg:#faf8f4; --card:#fff; --text:#2c2820; --muted:#8a8278; --sep:#e8e3db; --tint:#3b82c4; }
-    @media (prefers-color-scheme: dark) {
-      :root { --bg:#1b1814; --card:#2a2620; --text:#eee8dd; --muted:#a59d90; --sep:#3b352d; --tint:#6aa6e6; }
-    }
-    * { box-sizing: border-box; }
-    body { margin:0; background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.6; }
-    main { max-width: 720px; margin: 0 auto; padding: 48px 20px 80px; }
-    .eyebrow { font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); }
-    h1 { font-family:Georgia,"Times New Roman",serif; font-weight:600; font-size:32px; margin:4px 0; }
-    h2 { font-family:Georgia,"Times New Roman",serif; font-weight:500; font-size:20px; margin:36px 0 8px; }
-    .meta { color:var(--muted); font-size:14px; margin-bottom:24px; }
-    p, li { font-size:16px; }
-    ul { padding-left: 22px; }
-    a { color:var(--tint); }
-    .box { background:var(--card); border:1px solid var(--sep); border-radius:14px; padding:16px 20px; margin:20px 0; }
-  </style>
+  <meta name="theme-color" content="#faf8f4">
+  <link rel="icon" href="../icon-180.png">
+  <link rel="apple-touch-icon" href="../icon-180.png">
+  <link rel="stylesheet" href="../sub.css">
 </head>
 <body>
-<main>
-  <div class="eyebrow"><a href="../" style="color:inherit;text-decoration:none">Vores familie</a></div>
-  <h1>Privatlivspolitik</h1>
-  <div class="meta">Senest opdateret: 20. oktober 2026</div>
 
-  <div class="box">
-    <strong>Kort fortalt:</strong> Vores familie gemmer jeres minder i jeres egen iCloud. Vi har ingen
-    server med jeres data, vi kan ikke se dem, og appen indeholder ingen reklamer, statistik eller sporing.
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand serif" href="../"><img src="../icon-180.png" alt="">Vores familie</a>
+    <div class="nav-links">
+      <a href="../" class="hide-sm">Om appen</a>
+      <a href="../support/">Support</a>
+      <a href="./" aria-current="page">Privatliv</a>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap prose">
+  <header class="head">
+    <div class="eyebrow reveal">Vores familie</div>
+    <h1 class="serif reveal">Privatlivspolitik.</h1>
+    <div class="meta reveal">Senest opdateret: 20. oktober 2026</div>
+  </header>
+
+  <div class="card reveal">
+    <p><strong>Kort fortalt:</strong> Vores familie gemmer jeres minder i jeres egen iCloud. Vi har ingen
+    server med jeres data, vi kan ikke se dem, og appen indeholder ingen reklamer, statistik eller sporing.</p>
   </div>
 
-  <h2>1. Hvem vi er</h2>
+  <h2 class="serif">1. Hvem vi er</h2>
   <p>Vores familie udvikles og udgives af Prehn apps v/Andreas Prehn Christensen, CVR 40316191, Danmark ("vi"). Kontakt: <a href="mailto:apps@prehn.net">apps@prehn.net</a>.</p>
 
-  <h2>2. Hvad appen gør</h2>
+  <h2 class="serif">2. Hvad appen gør</h2>
   <p>Vores familie er en privat mindebog for familien. Forældre kan gemme dagbog, højdepunkter, milepæle,
   billeder, video, lyd, breve, vækst, vaccinationer, interview, minder, begivenheder, rejser, fødselsdage,
   traditioner og opskrifter, og dele det med dem, de selv inviterer.</p>
 
-  <h2>3. Hvilke oplysninger appen behandler</h2>
+  <h2 class="serif">3. Hvilke oplysninger appen behandler</h2>
   <p>Appen behandler kun det, I selv lægger ind:</p>
   <ul>
     <li>Familiens navn og det navn, du vælger for dig selv, og evt. din fødselsdag.</li>
@@ -55,7 +55,7 @@
   </ul>
   <p>Det omfatter personoplysninger om børn. Som forælder eller værge bestemmer du, hvad der gemmes.</p>
 
-  <h2>4. Hvor oplysningerne ligger</h2>
+  <h2 class="serif">4. Hvor oplysningerne ligger</h2>
   <p>Alt indhold gemmes i Apples iCloud (CloudKit) i den private database, der hører til dit Apple-ID.
   Apple krypterer data under overførsel og opbevaring. Vi driver ingen servere og har ingen teknisk adgang
   til jeres indhold. Apple behandler data på dine vegne efter
@@ -63,7 +63,7 @@
   <p>Enkelte ting gemmes kun lokalt på telefonen: indstillinger (fx tema og påmindelser), en midlertidig
   kopi af det sidst viste, så appen åbner hurtigt, og en lille oversigt til widgets og notifikationer.</p>
 
-  <h2>5. Deling</h2>
+  <h2 class="serif">5. Deling</h2>
   <ul>
     <li>Du kan invitere andre (fx din partner eller bedsteforældre) til familien med Apples iCloud-deling,
       enten til at redigere eller kun se. Kun de, du inviterer og som accepterer, får adgang.</li>
@@ -71,7 +71,7 @@
     <li>Du kan til enhver tid ændre adgang eller fjerne personer under Mere → Familie og adgang.</li>
   </ul>
 
-  <h2>6. Tilladelser på telefonen</h2>
+  <h2 class="serif">6. Tilladelser på telefonen</h2>
   <ul>
     <li><strong>Fotos:</strong> til at vælge billeder og vise forslag fra en bestemt dato. Billederne
       bliver på telefonen, indtil du selv vælger at gemme dem i appen.</li>
@@ -81,11 +81,11 @@
   </ul>
   <p>Alle tilladelser kan slås fra i iOS' Indstillinger.</p>
 
-  <h2>7. Køb</h2>
+  <h2 class="serif">7. Køb</h2>
   <p>Premium købes gennem App Store. Betalingen håndteres af Apple, og vi modtager ingen betalingsoplysninger.
   Appen gemmer kun, at familien har Premium, og hvor længe, så alle i familien får glæde af købet.</p>
 
-  <h2>8. Det gør vi ikke</h2>
+  <h2 class="serif">8. Det gør vi ikke</h2>
   <ul>
     <li>Ingen statistik, crash-rapportering fra tredjepart, reklamer eller sporing.</li>
     <li>Ingen konto hos os. Du bruger dit Apple-ID via iCloud.</li>
@@ -93,13 +93,13 @@
     <li>Ingen brug af jeres indhold til træning af kunstig intelligens.</li>
   </ul>
 
-  <h2>9. Retsgrundlag</h2>
+  <h2 class="serif">9. Retsgrundlag</h2>
   <p>Behandlingen sker på grundlag af dit samtykke og for at levere den tjeneste, du har bedt om
   (databeskyttelsesforordningens art. 6, stk. 1, litra a og b). Da appen bruges til private familieformål,
   falder meget af indholdet under undtagelsen for rent personlige aktiviteter. Politikken er alligevel skrevet
   efter GDPR's krav.</p>
 
-  <h2>10. Dine rettigheder</h2>
+  <h2 class="serif">10. Dine rettigheder</h2>
   <ul>
     <li><strong>Indsigt og eksport:</strong> Mere → Eksportér samler alt i en ZIP-fil med billeder, video, tekster og PDF-mindebøger.</li>
     <li><strong>Rettelse:</strong> ret direkte i appen.</li>
@@ -108,18 +108,26 @@
     <li><strong>Klage:</strong> du kan klage til <a href="https://www.datatilsynet.dk">Datatilsynet</a>.</li>
   </ul>
 
-  <h2>11. Børn</h2>
+  <h2 class="serif">11. Børn</h2>
   <p>Appen er beregnet til voksne (forældre, værger og familie). Den er ikke rettet mod børn, og vi indsamler
   ikke oplysninger direkte fra børn. Oplysninger om børn lægges ind af forældre eller værger.</p>
 
-  <h2>12. Opbevaring</h2>
+  <h2 class="serif">12. Opbevaring</h2>
   <p>Vi opbevarer intet. Indholdet bliver i jeres iCloud, indtil I sletter det eller holder op med at bruge iCloud.</p>
 
-  <h2>13. Ændringer</h2>
+  <h2 class="serif">13. Ændringer</h2>
   <p>Ændres politikken, offentliggøres den nye udgave her med ny dato. Væsentlige ændringer nævnes i appen.</p>
 
-  <h2>14. Kontakt</h2>
+  <h2 class="serif">14. Kontakt</h2>
   <p>Spørgsmål om privatliv: <a href="mailto:apps@prehn.net">apps@prehn.net</a>.</p>
 </main>
+
+<footer class="wrap">
+  <a href="../">Om Vores familie</a> · <a href="../support/">Support</a> ·
+  <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Vilkår (EULA)</a><br>
+  Prehn apps v/Andreas Prehn Christensen · CVR 40316191 · Danmark
+</footer>
+
+<script src="../sub.js"></script>
 </body>
 </html>

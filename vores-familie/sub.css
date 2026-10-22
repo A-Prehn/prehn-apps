@@ -1,0 +1,92 @@
+/* Fælles stil for Vores familie-undersiderne (support og privatliv).
+   Samme farver, skrift og bevægelse som landingssiden (vores-familie/index.html). */
+:root {
+  color-scheme: light;
+  --bg:#faf8f4; --bg2:#f0ede6; --card:#ffffff; --text:#2c2820; --muted:#8a8278; --faint:#a89572; --sep:#e8e3db;
+  --rose:#d4547a; --tint:#3b82c4; --ink:#2c2820;
+  --radius:22px; --ease:cubic-bezier(.32,.72,0,1);
+}
+* { box-sizing:border-box; }
+html { font-size:100%; -webkit-text-size-adjust:100%; scroll-padding-top:4.5rem; }
+body { margin:0; background:var(--bg); color:var(--text);
+       font:1.0625rem/1.6 -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, "Segoe UI", sans-serif;
+       -webkit-font-smoothing:antialiased; }
+.serif { font-family:"New York", ui-serif, Georgia, "Times New Roman", serif; font-weight:500; }
+.wrap { max-width:46rem; margin:0 auto; padding:0 1.25rem; }
+a { color:var(--rose); text-underline-offset:3px; }
+p { margin:0 0 1rem; }
+
+/* Glas-navigation med kant-fade, når der er indhold under den */
+.nav { position:sticky; top:0; z-index:20; height:52px;
+       background:rgba(250,248,244,.74); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); }
+.nav::after { content:""; position:absolute; left:0; right:0; top:100%; height:14px; pointer-events:none;
+              background:linear-gradient(rgba(44,40,32,.06), transparent); opacity:0; transition:opacity .3s; }
+.nav.scrolled::after { opacity:1; }
+.nav .wrap { height:100%; display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+.brand { display:flex; align-items:center; gap:.55rem; font-weight:600; letter-spacing:-.01em; text-decoration:none; color:var(--text); }
+.brand img { width:26px; height:26px; border-radius:7px; }
+.nav-links { display:flex; gap:1.1rem; font-size:.875rem; }
+.nav-links a { color:var(--muted); text-decoration:none; }
+.nav-links a[aria-current] { color:var(--text); font-weight:600; }
+
+/* Overskrift */
+.head { padding:clamp(2.5rem, 8vw, 4.5rem) 0 1.5rem; }
+.eyebrow { font-size:.8125rem; font-weight:600; letter-spacing:.02em; color:var(--rose); margin-bottom:.6rem; }
+h1 { font-size:clamp(2.2rem, 6.5vw, 3.25rem); line-height:1.05; letter-spacing:-.03em; margin:0; }
+.lead { font-size:clamp(1.0625rem, 2vw, 1.25rem); line-height:1.5; letter-spacing:-.01em; color:var(--muted); margin:1rem 0 0; max-width:34em; }
+.meta { font-size:.875rem; color:var(--faint); margin-top:.75rem; }
+h2 { font-size:1.5rem; line-height:1.2; letter-spacing:-.02em; margin:3rem 0 .9rem; }
+
+/* Kort */
+.card { background:var(--card); border-radius:var(--radius); padding:1.4rem 1.5rem;
+        box-shadow:0 1px 2px rgba(44,40,32,.04), 0 12px 40px -24px rgba(44,40,32,.18); }
+.card p:last-child { margin-bottom:0; }
+
+/* Spørgsmål — grupperet liste som i iOS Indstillinger */
+.faq { background:var(--card); border-radius:var(--radius); overflow:hidden;
+       box-shadow:0 1px 2px rgba(44,40,32,.04), 0 12px 40px -24px rgba(44,40,32,.18); }
+details { border-top:1px solid var(--sep); }
+details:first-child { border-top:0; }
+summary { cursor:pointer; list-style:none; display:flex; justify-content:space-between; align-items:center; gap:1rem;
+          padding:1.05rem 1.4rem; font-weight:600; -webkit-tap-highlight-color:transparent;
+          transition:background-color .15s; }
+summary::-webkit-details-marker { display:none; }
+summary:active { background:var(--bg2); }
+summary::after { content:""; flex-shrink:0; width:9px; height:9px; margin-right:3px;
+                 border-right:2px solid var(--faint); border-bottom:2px solid var(--faint);
+                 transform:rotate(45deg) translateY(-3px); transition:transform .35s var(--ease); }
+details[open] summary::after { transform:rotate(225deg) translateY(-1px); }
+.answer { padding:0 1.4rem 1.2rem; color:var(--muted); }
+.answer p:last-child { margin-bottom:0; }
+details[open] .answer { animation:open .35s var(--ease); }
+@keyframes open { from { opacity:0; transform:translateY(-6px); } to { opacity:1; transform:none; } }
+strong { color:var(--text); font-weight:600; }
+
+/* Brødtekst (privatliv) */
+.prose ul { padding-left:1.25rem; margin:0 0 1rem; }
+.prose li { margin:.35rem 0; }
+.prose li::marker { color:var(--faint); }
+
+/* Kontakt */
+.contact { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1rem; }
+.btn { display:inline-flex; align-items:center; gap:.5rem; background:var(--ink); color:#fff; text-decoration:none;
+       border-radius:999px; padding:.7rem 1.25rem; font-weight:600; font-size:.9375rem;
+       transition:transform .12s ease-out, opacity .12s; }
+.btn:active, .btn.down { transform:scale(.96); opacity:.85; }
+
+footer { padding:3rem 0 4rem; font-size:.8125rem; color:var(--faint); text-align:center; line-height:1.7; }
+footer a { color:var(--faint); }
+
+/* Indtoning */
+.reveal { opacity:0; transform:translateY(16px); transition:opacity .7s var(--ease), transform .7s var(--ease); }
+.reveal.in { opacity:1; transform:none; }
+
+@media (max-width:520px) { .nav-links a.hide-sm { display:none; } }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { transform:none; transition:opacity .25s ease; }
+  summary::after, details[open] .answer { transition:none; animation:none; }
+  .btn:active, .btn.down { transform:none; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .nav { background:var(--bg); backdrop-filter:none; -webkit-backdrop-filter:none; }
+}
