@@ -5,43 +5,81 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Prehn apps</title>
   <meta name="description" content="Små, varme apps til familien.">
-  <link rel="icon" href="vores-familie/icon-180.png">
+  <meta name="theme-color" content="#1e1a16">
+  <link rel="icon" type="image/svg+xml" href="brand/prehn-apps-mark.svg">
+  <link rel="apple-touch-icon" href="brand/prehn-apps-mark-1024.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600;700&family=Inter:wght@400;500&display=swap">
   <style>
-    :root { --bg:#faf8f4; --card:#fff; --text:#2c2820; --muted:#8a8278; --sep:#e8e3db; --tint:#3b82c4; }
-    @media (prefers-color-scheme: dark) {
-      :root { --bg:#1b1814; --card:#2a2620; --text:#eee8dd; --muted:#a59d90; --sep:#3b352d; --tint:#6aa6e6; }
+    /* Prehn apps designsystem: mørkt tema er det primære */
+    :root {
+      color-scheme: dark;
+      --ground:#1e1a16; --surface:#2a241f; --surface-raised:#352e27; --border:#3a3129;
+      --ink:#f1e8da; --ink-muted:#b9a48c; --ink-faint:#7d6d5c;
+      --brown:#8a5f44; --brown-hover:#9d6e50; --cream:#f5ead9;
+      --font-serif:"Source Serif 4", Georgia, "Times New Roman", serif;
+      --font-sans:Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+      --space-2:8px; --space-4:16px; --space-6:24px; --space-8:32px; --space-12:48px;
+      --radius-md:10px; --radius-lg:22px;
     }
-    * { box-sizing: border-box; }
-    body { margin:0; background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.6; }
-    main { max-width: 720px; margin: 0 auto; padding: 64px 20px 80px; }
-    h1 { font-family:Georgia,"Times New Roman",serif; font-weight:600; font-size:34px; margin:0 0 4px; }
-    .sub { color:var(--muted); margin:0 0 32px; }
-    a.app { display:flex; gap:16px; align-items:center; background:var(--card); border:1px solid var(--sep);
-            border-radius:16px; padding:16px; text-decoration:none; color:var(--text); }
-    a.app img { width:64px; height:64px; border-radius:15px; }
-    a.app strong { font-family:Georgia,"Times New Roman",serif; font-size:20px; font-weight:500; }
-    a.app span { display:block; color:var(--muted); font-size:15px; }
-    footer { margin-top:48px; color:var(--muted); font-size:13px; }
-    footer a { color:var(--muted); }
+    * { box-sizing:border-box; }
+    html, body { margin:0; background:var(--ground); color:var(--ink); }
+    body { font:400 16px/24px var(--font-sans); -webkit-font-smoothing:antialiased; min-height:100vh; display:flex; flex-direction:column; }
+    main { width:100%; max-width:720px; margin:0 auto; padding:var(--space-12) var(--space-4) var(--space-8); flex:1; }
+    @media (min-width:720px) { main { padding:96px var(--space-12) var(--space-12); } }
+
+    /* Ordmærket: SVG'en har sin frizone indbygget, så den må ikke beskæres */
+    .wordmark { display:block; width:min(300px, 80vw); height:auto; margin:0 0 0 -22px; }
+    .tagline { margin:var(--space-2) 0 0; font-size:14px; line-height:20px; color:var(--ink-muted); }
+
+    h2 { font:600 22px/28px var(--font-serif); margin:72px 0 var(--space-4); }
+
+    .app { display:flex; gap:var(--space-4); align-items:center; padding:var(--space-4);
+           background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-md);
+           color:var(--ink); text-decoration:none; transition:background-color .15s ease; }
+    .app:hover { background:var(--surface-raised); }
+    .app:active { background:var(--surface-raised); }
+    .app:focus-visible { outline:2px solid var(--brown-hover); outline-offset:2px; }
+    .app img { width:64px; height:64px; border-radius:15px; flex-shrink:0; }
+    .app .name { display:block; font:600 22px/28px var(--font-serif); }
+    .app .desc { display:block; font-size:14px; line-height:20px; color:var(--ink-muted); margin-top:2px; }
+    .app .go { margin-left:auto; color:var(--ink-faint); font-size:22px; line-height:1; padding-left:var(--space-2); }
+
+    .about { margin-top:var(--space-12); color:var(--ink-muted); max-width:34em; }
+
+    footer { width:100%; max-width:720px; margin:0 auto; padding:var(--space-6) var(--space-4) var(--space-12);
+             border-top:1px solid var(--border); font-size:13px; line-height:18px; color:var(--ink-muted); }
+    @media (min-width:720px) { footer { padding-inline:var(--space-12); } }
+    footer a { color:var(--ink); text-decoration-color:var(--brown); text-underline-offset:3px; }
+    footer a:hover { text-decoration-color:var(--ink); }
+
+    @media (prefers-reduced-motion: reduce) { .app { transition:none; } }
   </style>
 </head>
 <body>
 <main>
-  <h1>Prehn apps</h1>
-  <p class="sub">Små, varme apps til familien.</p>
+  <h1 style="margin:0">
+    <img class="wordmark" src="brand/prehn-apps-wordmark-light.svg" alt="Prehn apps" width="1379" height="469">
+  </h1>
+  <p class="tagline">Små, varme apps til familien.</p>
 
+  <h2>Apps</h2>
   <a class="app" href="vores-familie/">
     <img src="vores-familie/icon-180.png" alt="">
     <div>
-      <strong>Vores familie</strong>
-      <span>Mindebogen, der vokser med jer — til iPhone</span>
+      <span class="name">Vores familie</span>
+      <span class="desc">Mindebogen, der vokser med jer — til iPhone</span>
     </div>
+    <span class="go" aria-hidden="true">›</span>
   </a>
 
-  <footer>
-    Kontakt: <a href="mailto:apps@prehn.net">apps@prehn.net</a><br>
-    Prehn apps v/Andreas Prehn Christensen · CVR 40316191 · Danmark
-  </footer>
+  <p class="about">Prehn apps laver små apps til familier. Ingen reklamer, ingen sporing — jeres data bliver hos jer.</p>
 </main>
+
+<footer>
+  Kontakt: <a href="mailto:apps@prehn.net">apps@prehn.net</a><br>
+  Prehn apps v/Andreas Prehn Christensen · CVR 40316191 · Danmark
+</footer>
 </body>
 </html>
