@@ -2,7 +2,7 @@
 <html lang="da">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Prehn apps</title>
   <meta name="description" content="Små, varme apps til familien.">
   <meta name="theme-color" content="#1e1a16">
@@ -10,9 +10,9 @@
   <link rel="apple-touch-icon" href="brand/prehn-apps-mark-1024.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600;700&family=Inter:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Inter:opsz,wght@14..32,400;14..32,500&display=swap">
   <style>
-    /* Prehn apps designsystem: mørkt tema er det primære */
+    /* Prehn apps-designsystemet (farver, skrift, radius) + Apples principper for bevægelse og typografi */
     :root {
       color-scheme: dark;
       --ground:#1e1a16; --surface:#2a241f; --surface-raised:#352e27; --border:#3a3129;
@@ -20,66 +20,127 @@
       --brown:#8a5f44; --brown-hover:#9d6e50; --cream:#f5ead9;
       --font-serif:"Source Serif 4", Georgia, "Times New Roman", serif;
       --font-sans:Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
-      --space-2:8px; --space-4:16px; --space-6:24px; --space-8:32px; --space-12:48px;
-      --radius-md:10px; --radius-lg:22px;
+      --radius-md:10px;
+      --ease:cubic-bezier(.32,.72,0,1);
     }
     * { box-sizing:border-box; }
+    html { font-size:100%; -webkit-text-size-adjust:100%; }
     html, body { margin:0; background:var(--ground); color:var(--ink); }
-    body { font:400 16px/24px var(--font-sans); -webkit-font-smoothing:antialiased; min-height:100vh; display:flex; flex-direction:column; }
-    main { width:100%; max-width:720px; margin:0 auto; padding:var(--space-12) var(--space-4) var(--space-8); flex:1; }
-    @media (min-width:720px) { main { padding:96px var(--space-12) var(--space-12); } }
+    body { font:400 1rem/1.5 var(--font-sans); font-optical-sizing:auto; -webkit-font-smoothing:antialiased;
+           min-height:100vh; min-height:100svh; display:flex; flex-direction:column; }
+    .wrap { width:100%; max-width:45rem; margin:0 auto; padding-inline:max(1rem, env(safe-area-inset-left)); }
+    @media (min-width:45rem) { .wrap { padding-inline:3rem; } }
 
-    /* Ordmærket: SVG'en har sin frizone indbygget, så den må ikke beskæres */
-    .wordmark { display:block; width:min(300px, 80vw); height:auto; margin:0 0 0 -22px; }
-    .tagline { margin:var(--space-2) 0 0; font-size:14px; line-height:20px; color:var(--ink-muted); }
+    /* Glasbjælke: indhold glider under; en blød kant vises kun når der er noget under den */
+    .bar { position:sticky; top:0; z-index:10; height:3.25rem;
+           background:rgba(30,26,22,.72); backdrop-filter:blur(20px) saturate(160%); -webkit-backdrop-filter:blur(20px) saturate(160%);
+           transform:translateY(-100%); transition:transform .45s var(--ease); }
+    .bar.show { transform:none; }
+    .bar::after { content:""; position:absolute; inset:100% 0 auto; height:.75rem; pointer-events:none;
+                  background:linear-gradient(rgba(30,26,22,.55), transparent); }
+    .bar .wrap { height:100%; display:flex; align-items:center; }
+    .bar img { height:1.6rem; width:auto; margin-left:-.4rem; }
 
-    h2 { font:600 22px/28px var(--font-serif); margin:72px 0 var(--space-4); }
+    main { flex:1; }
+    .hero { padding-top:clamp(3rem, 12vw, 7.5rem); margin-top:-3.25rem; }
 
-    .app { display:flex; gap:var(--space-4); align-items:center; padding:var(--space-4);
+    /* Ordmærket bærer sin frizone i SVG'en — beskæres ikke */
+    .wordmark { display:block; width:min(22rem, 82vw); height:auto; margin-left:-1.5rem; }
+    .tagline { margin:.5rem 0 0; font-size:clamp(1.0625rem, 2.4vw, 1.25rem); line-height:1.4; letter-spacing:-.005em; color:var(--ink-muted); }
+
+    /* Typografi: tæt tracking på store størrelser, neutral på brødtekst */
+    h2 { font:600 1.375rem/1.25 var(--font-serif); letter-spacing:-.01em; margin:clamp(4rem, 10vw, 6rem) 0 1rem; }
+
+    /* App-kort: feedback straks ved tryk (pointer-down), ingen skygger — dybde fra surface + hårstreg */
+    .app { display:flex; gap:1rem; align-items:center; padding:1rem; min-height:4.5rem;
            background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-md);
-           color:var(--ink); text-decoration:none; transition:background-color .15s ease; }
+           color:var(--ink); text-decoration:none; -webkit-tap-highlight-color:transparent;
+           transition:background-color .2s var(--ease), transform .2s var(--ease); }
     .app:hover { background:var(--surface-raised); }
-    .app:active { background:var(--surface-raised); }
-    .app:focus-visible { outline:2px solid var(--brown-hover); outline-offset:2px; }
-    .app img { width:64px; height:64px; border-radius:15px; flex-shrink:0; }
-    .app .name { display:block; font:600 22px/28px var(--font-serif); }
-    .app .desc { display:block; font-size:14px; line-height:20px; color:var(--ink-muted); margin-top:2px; }
-    .app .go { margin-left:auto; color:var(--ink-faint); font-size:22px; line-height:1; padding-left:var(--space-2); }
+    .app.down, .app:active { background:var(--surface-raised); transform:scale(.985); transition-duration:.08s; }
+    .app:focus-visible { outline:2px solid var(--brown-hover); outline-offset:3px; }
+    .app img { width:4rem; height:4rem; border-radius:.95rem; flex-shrink:0; }
+    .app .name { display:block; font:600 1.375rem/1.25 var(--font-serif); letter-spacing:-.01em; }
+    .app .desc { display:block; font-size:.875rem; line-height:1.4; color:var(--ink-muted); margin-top:.15rem; }
+    .app .go { margin-left:auto; padding-left:.5rem; color:var(--ink-faint); transition:transform .3s var(--ease), color .2s; }
+    .app:hover .go { transform:translateX(3px); color:var(--ink-muted); }
+    .app .go svg { width:.6rem; height:1rem; display:block; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
 
-    .about { margin-top:var(--space-12); color:var(--ink-muted); max-width:34em; }
+    .about { margin:3rem 0 4rem; color:var(--ink-muted); max-width:32em; }
 
-    footer { width:100%; max-width:720px; margin:0 auto; padding:var(--space-6) var(--space-4) var(--space-12);
-             border-top:1px solid var(--border); font-size:13px; line-height:18px; color:var(--ink-muted); }
-    @media (min-width:720px) { footer { padding-inline:var(--space-12); } }
+    footer { border-top:1px solid var(--border); font-size:.8125rem; line-height:1.4; color:var(--ink-muted);
+             padding-top:1.5rem; padding-bottom:max(3rem, env(safe-area-inset-bottom)); }
     footer a { color:var(--ink); text-decoration-color:var(--brown); text-underline-offset:3px; }
     footer a:hover { text-decoration-color:var(--ink); }
 
-    @media (prefers-reduced-motion: reduce) { .app { transition:none; } }
+    /* Indtoning, der starter fra hvor elementet er — kort og rolig */
+    .reveal { opacity:0; transform:translateY(12px); transition:opacity .7s var(--ease), transform .7s var(--ease); }
+    .reveal.in { opacity:1; transform:none; }
+    .reveal.d1 { transition-delay:.06s; } .reveal.d2 { transition-delay:.12s; } .reveal.d3 { transition-delay:.18s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { transform:none; transition:opacity .25s ease; }
+      .app, .app .go, .bar { transition:none; }
+      .app.down, .app:active { transform:none; }
+    }
+    @media (prefers-reduced-transparency: reduce) {
+      .bar { background:var(--ground); backdrop-filter:none; -webkit-backdrop-filter:none; }
+    }
+    @media (prefers-contrast: more) {
+      :root { --border:#6b5a49; --ink-muted:#d4c2ac; }
+    }
   </style>
 </head>
 <body>
+<header class="bar" id="bar" aria-hidden="true">
+  <div class="wrap"><img src="brand/prehn-apps-wordmark-light.svg" alt=""></div>
+</header>
+
 <main>
-  <h1 style="margin:0">
-    <img class="wordmark" src="brand/prehn-apps-wordmark-light.svg" alt="Prehn apps" width="1379" height="469">
-  </h1>
-  <p class="tagline">Små, varme apps til familien.</p>
+  <section class="hero wrap">
+    <h1 style="margin:0" class="reveal">
+      <img class="wordmark" id="wordmark" src="brand/prehn-apps-wordmark-light.svg" alt="Prehn apps" width="1379" height="469">
+    </h1>
+    <p class="tagline reveal d1">Små, varme apps til familien.</p>
+  </section>
 
-  <h2>Apps</h2>
-  <a class="app" href="vores-familie/">
-    <img src="vores-familie/icon-180.png" alt="">
-    <div>
-      <span class="name">Vores familie</span>
-      <span class="desc">Mindebogen, der vokser med jer — til iPhone</span>
-    </div>
-    <span class="go" aria-hidden="true">›</span>
-  </a>
+  <section class="wrap">
+    <h2 class="reveal d2">Apps</h2>
+    <a class="app reveal d3" href="vores-familie/">
+      <img src="vores-familie/icon-180.png" alt="">
+      <div>
+        <span class="name">Vores familie</span>
+        <span class="desc">Mindebogen, der vokser med jer — til iPhone</span>
+      </div>
+      <span class="go" aria-hidden="true"><svg viewBox="0 0 10 16"><path d="M2 2l6 6-6 6"/></svg></span>
+    </a>
 
-  <p class="about">Prehn apps laver små apps til familier. Ingen reklamer, ingen sporing.</p>
+    <p class="about reveal">Prehn apps laver små apps til familier. Ingen reklamer, ingen sporing.</p>
+  </section>
 </main>
 
-<footer>
+<footer class="wrap">
   Kontakt: <a href="mailto:apps@prehn.net">apps@prehn.net</a><br>
   Prehn apps v/Andreas Prehn Christensen · CVR 40316191 · Danmark
 </footer>
+
+<script>
+  // Feedback på pointer-down — ikke først når fingeren slipper
+  document.querySelectorAll('.app').forEach(el => {
+    el.addEventListener('pointerdown', () => el.classList.add('down'));
+    ['pointerup', 'pointerleave', 'pointercancel'].forEach(e => el.addEventListener(e, () => el.classList.remove('down')));
+  });
+
+  // Indtoning når elementer kommer i syne
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }), { rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Glasbjælken med ordmærket glider ind, når det store ordmærke er scrollet ud af syne
+  const bar = document.getElementById('bar');
+  new IntersectionObserver(([e]) => bar.classList.toggle('show', !e.isIntersecting), { rootMargin: '-52px 0px 0px 0px' })
+    .observe(document.getElementById('wordmark'));
+</script>
 </body>
 </html>
