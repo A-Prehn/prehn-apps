@@ -3,7 +3,7 @@
 Statisk side for virksomheden Prehn apps (CVR 40316191) og dens apps. Ingen build-step.
 
 - `/` — forside for Prehn apps
-- `/vores-familie/` — landingsside for iOS-appen Vores familie (markedsføring; `noindex` indtil den er færdig)
+- `/vores-familie/` — landingsside for iOS-appen Vores familie (markedsføring)
 - `/vores-familie/support/` — support- og hjælpeside (Support URL i App Store)
 - `/vores-familie/privatliv/` — privatlivspolitik (Privacy Policy URL i App Store; linket fra appens paywall)
 
