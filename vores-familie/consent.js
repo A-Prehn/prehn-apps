@@ -47,9 +47,7 @@
     box.setAttribute('role', 'dialog');
     box.setAttribute('aria-label', 'Cookies');
     box.innerHTML =
-      '<p><strong>Hjælp os med at nå flere familier 🤍</strong><br>' +
-      'Med en lille cookie kan vi se, hvilke af vores opslag på Facebook og Instagram der får folk hertil. ' +
-      'Intet fra appen eller jeres familie deles. <a href="' + privacyHref + '">Læs mere</a></p>' +
+      '<p>Vi bruger cookies til at måle vores markedsføring. <a href="' + privacyHref + '">Læs mere</a></p>' +
       '<div class="row"><button type="button" class="no">Afvis</button><button type="button" class="yes">Accepter</button></div>';
     box.querySelector('.yes').onclick = function () { save('ja'); box.remove(); loadPixel(); };
     box.querySelector('.no').onclick = function () { save('nej'); box.remove(); };
