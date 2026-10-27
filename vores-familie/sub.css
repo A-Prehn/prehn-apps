@@ -2,8 +2,9 @@
    Samme farver, skrift og bevægelse som landingssiden (vores-familie/index.html). */
 :root {
   color-scheme: light;
-  --bg:#faf8f4; --bg2:#f0ede6; --card:#ffffff; --text:#2c2820; --muted:#8a8278; --faint:#a89572; --sep:#e8e3db;
-  --rose:#d4547a; --tint:#3b82c4; --ink:#2c2820;
+  /* Samme palet som appen (Theme.swift, issue #47): varm mauve. */
+  --bg:#f7efe7; --bg2:#e8d2c4; --card:#fdf8f3; --text:#3e3239; --muted:#7d6370; --faint:#c7a9a3; --sep:#e8d2c4;
+  --rose:#b8536f; --tint:#6b5560; --ink:#3e3239;
   --radius:22px; --ease:cubic-bezier(.32,.72,0,1);
 }
 * { box-sizing:border-box; }
